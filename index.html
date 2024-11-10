@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda | LegacyFitness</title>
+    <link rel="shortcut icon" href="./assets/img/logo_legacyfitness_pestaña.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="./assets/img/logo_legacyfitness.png" alt="LegacyFitness" class="logo-img">
+            </div>
+            <h1 class="navbar-title">Tienda Online de Productos Fitness</h1>
+            <div class="nav-buttons">
+                <button id="verCarrito" class="btn-carrito">Carrito (<span id="cantidadCarrito">0</span>)</button>
+                <button class="btn-sesion">Iniciar Sesión</button>
+            </div>
+        </nav>
+    </header>
+    <nav class="filters">
+        <div class="filter-group">
+            <label for="buscadorProductos">Buscar:</label>
+            <input type="text" id="buscadorProductos" placeholder="Buscar productos..." />
+        </div>
+        <div class="filter-group">
+            <label for="filtroCategoria">Categoría:</label>
+            <select id="filtroCategoria">
+                <option value="todos">Todos</option>
+                <option value="suplementos">Suplementos</option>
+                <option value="ropa">Ropa Deportiva</option>
+                <option value="accesorios">Accesorios Deportivos</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="ordenarPor">Ordenar por:</label>
+            <select id="ordenarPor">
+                <option value="precioAsc">Precio: Menor a Mayor</option>
+                <option value="precioDesc">Precio: Mayor a Menor</option>
+            </select>
+        </div>
+    </nav>   
+    <main id="contenedorProductos"></main>
+    <div id="carrito" class="carrito-oculto">
+        <h2>Carrito de Compras</h2>
+        <ul id="listaCarrito"></ul>
+        <p>Total: <span id="totalCarrito">$0 COP</span></p>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>

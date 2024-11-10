@@ -1,0 +1,252 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/**-----------------------------------------------*/
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.logo:hover .logo-img,
+.logo:hover .logo-text {
+    transform: scale(1.05);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.logo-img {
+    width: 15.625rem; 
+    height: auto;
+}
+
+.navbar-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-carrito, .btn-sesion {
+    background-color: #D6C59E;
+    color: #171717;
+    font-size: .9375rem;
+    font-weight: bold;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+.btn-carrito:hover, .btn-sesion:hover {
+    background-color: #ffffff; 
+    transform: scale(1.05); 
+}
+
+/**-----------------------------------------------*/
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 2.5rem; 
+    position: fixed; 
+    top: 4rem; 
+    left: 0;
+    right: 0;
+    z-index: 999; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+.filter-group {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.filters input[type="text"],
+.filters select {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #D6C59E;
+    color: #171717;
+    outline: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.filters input[type="text"]:hover,
+.filters select:hover {
+    background-color: #ffffff;
+    transform: scale(1.05);
+}
+
+.filters input[type="text"]::placeholder {
+    color: #171717;
+    opacity: 0.8;
+}
+
+/**-----------------------------------------------*/
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 1.5rem; 
+    padding: 1.5rem;
+    margin-top: 12.5rem;
+}
+
+.producto {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 18%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+
+.producto:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.producto img {
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.producto img::before {
+    content: "Imagen aquí";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.producto h3 {
+    margin: 0.3rem 0;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.producto p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+.botones-cantidad {
+    display: flex;
+    align-items: center;
+}
+
+.botones-cantidad button {
+    background-color: #D6C59E;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 25px;
+    height: 25px;
+}
+
+.botones-cantidad button:hover {
+    background-color: #bda77c;
+}
+
+.cantidad-producto {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0.2rem;
+    text-align: center;
+    width: 30px;
+}
+
+button.agregar-carrito {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button.agregar-carrito:hover {
+    background-color: #218838;
+    transform: scale(1.03);
+}
+
+/**-----------------------------------------------*/
+
+.carrito-oculto {
+    display: none;
+}
+
+#carrito {
+    border-top: 2px solid #333;
+    padding: 1rem;
+}
+
+#listaCarrito {
+    list-style: none;
+    padding: 0;
+}
