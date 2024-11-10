@@ -57,8 +57,12 @@ const contenedorProductos = document.getElementById("contenedorProductos");
 const listaCarrito = document.getElementById("listaCarrito");
 const totalCarrito = document.getElementById("totalCarrito");
 const verCarrito = document.getElementById("verCarrito");
+const carritoPanel = document.getElementById("carrito");
+const cerrarCarrito = document.getElementById("cerrarCarrito");
 const cantidadCarrito = document.getElementById("cantidadCarrito");
 const buscadorProductos = document.getElementById("buscadorProductos");
+const vaciarCarritoBtn = document.getElementById("vaciarCarrito");
+const finalizarCompraBtn = document.getElementById("finalizarCompra");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -115,7 +119,6 @@ function mostrarProductos(productos) {
     });
 }
 
-
 // Función para agregar productos al carrito con cantidad
 function agregarAlCarrito(id, cantidad) {
     const producto = productosJSON.find(prod => prod.id === id);
@@ -134,24 +137,46 @@ function agregarAlCarrito(id, cantidad) {
 function actualizarCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
     mostrarCarrito();
+
+// Actualizar la cantidad total de productos en el botón de Carrito
+    const totalProductos = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+    cantidadCarrito.textContent = totalProductos;
 }
 
 // Función para mostrar el carrito
 function mostrarCarrito() {
     listaCarrito.innerHTML = "";
     let total = 0;
+
     carrito.forEach(producto => {
         total += producto.precio * producto.cantidad;
-        const li = document.createElement("li");
-        li.innerHTML = `
-            ${producto.nombre} - $${producto.precio.toLocaleString()} COP x ${producto.cantidad}
-            <button onclick="cambiarCantidad(${producto.id}, 1)">+</button>
-            <button onclick="cambiarCantidad(${producto.id}, -1)">-</button>
+        
+        const itemCarrito = document.createElement("li");
+        itemCarrito.classList.add("carrito-item");
+        itemCarrito.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <div class="carrito-item-detalles">
+                <span>${producto.nombre}</span>
+                <span>Precio: $${producto.precio.toLocaleString()} COP</span>
+                <div class="carrito-item-cantidad">
+                    <button onclick="cambiarCantidad(${producto.id}, -1)">-</button>
+                    <span>${producto.cantidad}</span>
+                    <button onclick="cambiarCantidad(${producto.id}, 1)">+</button>
+                </div>
+            </div>
+            <button onclick="eliminarDelCarrito(${producto.id})" class="btn-cerrar-carrito">X</button>
         `;
-        listaCarrito.appendChild(li);
+
+        listaCarrito.appendChild(itemCarrito);
     });
+
     totalCarrito.textContent = `$${total.toLocaleString()} COP`;
-    cantidadCarrito.textContent = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+}
+
+// Función para eliminar un producto del carrito
+function eliminarDelCarrito(id) {
+    carrito = carrito.filter(prod => prod.id !== id);
+    actualizarCarrito();
 }
 
 // Función para cambiar la cantidad de productos
@@ -168,7 +193,11 @@ function cambiarCantidad(id, cantidad) {
 
 // Evento para mostrar/ocultar el carrito
 verCarrito.addEventListener("click", () => {
-    document.getElementById("carrito").classList.toggle("carrito-oculto");
+    carritoPanel.classList.add("activo");
+});
+
+cerrarCarrito.addEventListener("click", () => {
+    carritoPanel.classList.remove("activo");
 });
 
 // Cargar los productos al inicio
@@ -204,4 +233,22 @@ buscadorProductos.addEventListener("input", (e) => {
         prod.nombre.toLowerCase().includes(textoBusqueda)
     );
     mostrarProductos(productosFiltrados);
+});
+
+// Función para vaciar el carrito
+vaciarCarritoBtn.addEventListener("click", () => {
+    carrito = [];
+    actualizarCarrito();
+    alert("El carrito ha sido vaciado.");
+});
+
+// Función para finalizar la compra
+finalizarCompraBtn.addEventListener("click", () => {
+    if (carrito.length > 0) {
+        carrito = [];
+        actualizarCarrito();
+        alert("💪Gracias por tu compra. ¡Esperamos verte pronto!🤝");
+    } else {
+        alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
+    }
 });

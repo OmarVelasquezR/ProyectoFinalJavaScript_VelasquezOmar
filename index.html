@@ -43,11 +43,18 @@
         </div>
     </nav>   
     <main id="contenedorProductos"></main>
-    <div id="carrito" class="carrito-oculto">
-        <h2>Carrito de Compras</h2>
+    <div id="carrito" class="carrito-panel">
+        <div class="carrito-header">
+            <h2>Carrito de Compras</h2>
+            <button id="cerrarCarrito" class="btn-cerrar-carrito">X</button>
+        </div>
         <ul id="listaCarrito"></ul>
-        <p>Total: <span id="totalCarrito">$0 COP</span></p>
-    </div>
+        <p class="carrito-total">Total: <span id="totalCarrito">$0 COP</span></p>
+        <div class="carrito-acciones">
+            <button id="vaciarCarrito" class="btn-accion">Vaciar Carrito</button>
+            <button id="finalizarCompra" class="btn-accion">Finalizar Compra</button>
+        </div>
+    </div>     
     <script src="./js/script.js"></script>
 </body>
 </html>
