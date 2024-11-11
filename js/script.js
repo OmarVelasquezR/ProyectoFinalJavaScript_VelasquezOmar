@@ -82,6 +82,7 @@ function mostrarProductos(productos) {
         divProducto.innerHTML = `
             <img src="${producto.imagen}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
+            <p>${producto.categoria}</p>
             <p>Precio: $${producto.precio.toLocaleString()} COP</p>
         `;
 
