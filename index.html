@@ -6,6 +6,7 @@
     <title>Tienda | LegacyFitness</title>
     <link rel="shortcut icon" href="./assets/img/logo_legacyfitness_pestaña.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
     <header>
@@ -17,6 +18,13 @@
             <div class="nav-buttons">
                 <button id="verCarrito" class="btn-carrito">Carrito (<span id="cantidadCarrito">0</span>)</button>
                 <button class="btn-sesion">Iniciar Sesión</button>
+                <div class="usuario-contenedor">
+                    <span id="nombreUsuario" class="usuario-nombre">Usuario</span>
+                    <div id="menuUsuario" class="menu-usuario oculto">
+                        <a href="#" class="menu-opcion">Mi Cuenta</a>
+                        <a href="#" id="cerrarSesion" class="menu-opcion menu-cerrar-sesion">Cerrar Sesión</a>
+                    </div>
+                </div>                
             </div>
         </nav>
     </header>
@@ -55,6 +63,33 @@
             <button id="finalizarCompra" class="btn-accion">Finalizar Compra</button>
         </div>
     </div>     
+
+    <!-- Modal de Autenticación -->
+    <div id="modalAutenticacion" class="modal oculto">
+        <div class="modal-contenido">
+            <img src="./assets/img/logo_legacyfitness.png" alt="LegacyFitness" class="logo-modal">
+            <h2 id="modalTitulo">Iniciar Sesión</h2>
+            <form id="formAutenticacion">
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" placeholder="Ingrese su usuario" required>
+                
+                <label for="correo" id="correoLabel" class="oculto">Correo Electrónico:</label>
+                <input type="email" id="correo" class="oculto" placeholder="Ingrese su correo" required>
+                
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" placeholder="Ingrese su contraseña" required>
+                
+                <button type="submit" id="btnAccion" class="btn-principal">Iniciar Sesión</button>
+            </form>
+            <p id="alternarTexto">
+                ¿No tienes cuenta? 
+                <a href="#" id="btnAlternar" class="texto-enlace">Registrarme</a>
+            </p>
+            <button id="btnCerrarModal" class="btn-cerrar-modal">X</button>
+        </div>
+    </div>    
+
     <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

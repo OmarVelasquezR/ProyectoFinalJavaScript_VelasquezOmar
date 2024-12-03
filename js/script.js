@@ -1,56 +1,145 @@
-// Simulación de productos en JSON
-const productosJSON = [
-    { id: 1, nombre: "Proteína Whey", categoria: "suplementos", precio: 80000, imagen: "./assets/img/proteina.jpg" },
-    { id: 2, nombre: "Camiseta Deportiva", categoria: "ropa", precio: 40000, imagen: "./assets/img/camiseta.jpg" },
-    { id: 3, nombre: "Mancuernas 10 kg", categoria: "accesorios", precio: 120000, imagen: "./assets/img/mancuernas.jpg" },
-    { id: 4, nombre: "Creatina Monohidratada", categoria: "suplementos", precio: 70000, imagen: "./assets/img/creatina.jpg" },
-    { id: 5, nombre: "Short Deportivo", categoria: "ropa", precio: 35000, imagen: "./assets/img/short.jpg" },
-    { id: 6, nombre: "Cuerda para Saltar", categoria: "accesorios", precio: 15000, imagen: "./assets/img/cuerda.jpg" },
-    { id: 7, nombre: "BCAA en Polvo", categoria: "suplementos", precio: 60000, imagen: "./assets/img/bcaa.jpg" },
-    { id: 8, nombre: "Leggings Deportivos", categoria: "ropa", precio: 50000, imagen: "./assets/img/leggings.jpg" },
-    { id: 9, nombre: "Esterilla de Yoga", categoria: "accesorios", precio: 45000, imagen: "./assets/img/esterilla.jpg" },
-    { id: 10, nombre: "Glutamina", categoria: "suplementos", precio: 55000, imagen: "./assets/img/glutamina.jpg" },
-    { id: 11, nombre: "Top Deportivo", categoria: "ropa", precio: 30000, imagen: "./assets/img/top.jpg" },
-    { id: 12, nombre: "Rodillera Deportiva", categoria: "accesorios", precio: 25000, imagen: "./assets/img/rodillera.jpg" },
-    { id: 13, nombre: "Proteína Vegana", categoria: "suplementos", precio: 85000, imagen: "./assets/img/proteina_vegana.jpg" },
-    { id: 14, nombre: "Guantes de Entrenamiento", categoria: "ropa", precio: 25000, imagen: "./assets/img/guantes.jpg" },
-    { id: 15, nombre: "Kit de Bandas de Resistencia", categoria: "accesorios", precio: 35000, imagen: "./assets/img/bandas.jpg" },
-    { id: 16, nombre: "Pre-entrenamiento", categoria: "suplementos", precio: 75000, imagen: "./assets/img/pre_entrenamiento.jpg" },
-    { id: 17, nombre: "Sudadera Deportiva", categoria: "ropa", precio: 60000, imagen: "./assets/img/sudadera.jpg" },
-    { id: 18, nombre: "Pelota de Pilates", categoria: "accesorios", precio: 30000, imagen: "./assets/img/pelota.jpg" },
-    { id: 19, nombre: "Omega 3", categoria: "suplementos", precio: 40000, imagen: "./assets/img/omega3.jpg" },
-    { id: 20, nombre: "Mallas Cortas", categoria: "ropa", precio: 25000, imagen: "./assets/img/mallas.jpg" },
-    { id: 21, nombre: "Disco de Peso 5 kg", categoria: "accesorios", precio: 20000, imagen: "./assets/img/disco.jpg" },
-    { id: 22, nombre: "Multivitamínico", categoria: "suplementos", precio: 35000, imagen: "./assets/img/multivitaminico.jpg" },
-    { id: 23, nombre: "Gorra Deportiva", categoria: "ropa", precio: 15000, imagen: "./assets/img/gorra.jpg" },
-    { id: 24, nombre: "Balón Medicinal", categoria: "accesorios", precio: 50000, imagen: "./assets/img/balon.jpg" },
-    { id: 25, nombre: "Proteína Hidrolizada", categoria: "suplementos", precio: 90000, imagen: "./assets/img/proteina_hidrolizada.jpg" },
-    { id: 26, nombre: "Chaqueta Impermeable Deportiva", categoria: "ropa", precio: 75000, imagen: "./assets/img/chaqueta.jpg" },
-    { id: 27, nombre: "Rueda Abdominal", categoria: "accesorios", precio: 20000, imagen: "./assets/img/rueda.jpg" },
-    { id: 28, nombre: "Aminoácidos Esenciales", categoria: "suplementos", precio: 60000, imagen: "./assets/img/aminoacidos.jpg" },
-    { id: 29, nombre: "Pantalón Deportivo", categoria: "ropa", precio: 55000, imagen: "./assets/img/pantalon.jpg" },
-    { id: 30, nombre: "Tobillera con Peso", categoria: "accesorios", precio: 15000, imagen: "./assets/img/tobillera.jpg" },
-    { id: 31, nombre: "Proteína Caseína", categoria: "suplementos", precio: 70000, imagen: "./assets/img/caseina.jpg" },
-    { id: 32, nombre: "Bermudas Deportivas", categoria: "ropa", precio: 30000, imagen: "./assets/img/bermudas.jpg" },
-    { id: 33, nombre: "Soporte para Muñeca", categoria: "accesorios", precio: 10000, imagen: "./assets/img/soporte.jpg" },
-    { id: 34, nombre: "Proteína Isolate", categoria: "suplementos", precio: 95000, imagen: "./assets/img/isolate.jpg" },
-    { id: 35, nombre: "Camiseta de Compresión", categoria: "ropa", precio: 35000, imagen: "./assets/img/compresion.jpg" },
-    { id: 36, nombre: "Soga para Escalar", categoria: "accesorios", precio: 120000, imagen: "./assets/img/soga.jpg" },
-    { id: 37, nombre: "Proteína con Colágeno", categoria: "suplementos", precio: 85000, imagen: "./assets/img/colageno.jpg" },
-    { id: 38, nombre: "Pantaloneta de Correr", categoria: "ropa", precio: 20000, imagen: "./assets/img/pantaloneta.jpg" },
-    { id: 39, nombre: "Set de Mancuernas Ajustables", categoria: "accesorios", precio: 250000, imagen: "./assets/img/set_mancuernas.jpg" },
-    { id: 40, nombre: "Proteína para Ganar Masa", categoria: "suplementos", precio: 95000, imagen: "./assets/img/ganar_masa.jpg" },
-    { id: 41, nombre: "Camiseta sin Mangas", categoria: "ropa", precio: 30000, imagen: "./assets/img/sin_mangas.jpg" },
-    { id: 42, nombre: "Saco de Arena", categoria: "accesorios", precio: 80000, imagen: "./assets/img/saco.jpg" },
-    { id: 43, nombre: "Glutamina en Cápsulas", categoria: "suplementos", precio: 60000, imagen: "./assets/img/glutamina_capsulas.jpg" },
-    { id: 44, nombre: "Gorra Reflectante", categoria: "ropa", precio: 20000, imagen: "./assets/img/gorra_reflectante.jpg" },
-    { id: 45, nombre: "Rodillo de Espuma", categoria: "accesorios", precio: 30000, imagen: "./assets/img/rodillo.jpg" },
-    { id: 46, nombre: "Proteína para Mujeres", categoria: "suplementos", precio: 85000, imagen: "./assets/img/proteina_mujeres.jpg" },
-    { id: 47, nombre: "Calcetines Deportivos", categoria: "ropa", precio: 10000, imagen: "./assets/img/calcetines.jpg" },
-    { id: 48, nombre: "Tapete Antideslizante", categoria: "accesorios", precio: 25000, imagen: "./assets/img/tapete.jpg" },
-    { id: 49, nombre: "Proteína Post-Entreno", categoria: "suplementos", precio: 70000, imagen: "./assets/img/post_entreno.jpg" },
-    { id: 50, nombre: "Sudadera Impermeable", categoria: "ropa", precio: 80000, imagen: "./assets/img/sudadera_impermeable.jpg" }
-];
+// --------------- AUTENTIFICACION DE USUARIO ---------------
+
+// Variables del DOM para autentificacion de usuario
+const modalAutenticacion = document.getElementById("modalAutenticacion");
+const btnSesion = document.querySelector(".btn-sesion");
+const btnCerrarModal = document.getElementById("btnCerrarModal");
+const btnAccion = document.getElementById("btnAccion");
+const btnAlternar = document.getElementById("btnAlternar");
+const formAutenticacion = document.getElementById("formAutenticacion");
+const modalTitulo = document.getElementById("modalTitulo");
+const usuarioInput = document.getElementById("usuario");
+const contrasenaInput = document.getElementById("contrasena");
+const correoInput = document.getElementById("correo");
+const nombreUsuario = document.getElementById("nombreUsuario");
+const menuUsuario = document.getElementById("menuUsuario");
+const cerrarSesion = document.getElementById("cerrarSesion");
+
+// Datos
+let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo")) || null;
+
+// Mostrar modal de autenticación
+btnSesion.addEventListener("click", () => {
+    modalAutenticacion.classList.remove("oculto");
+    usuarioInput.value = "";
+    contrasenaInput.value = "";
+});
+
+// Cerrar modal de autenticación
+btnCerrarModal.addEventListener("click", () => {
+    modalAutenticacion.classList.add("oculto");
+});
+
+// Alternar entre iniciar sesión y registrar
+btnAlternar.addEventListener("click", (e) => {
+    e.preventDefault();
+    const esRegistro = btnAccion.textContent === "Iniciar Sesión";
+    btnAccion.textContent = esRegistro ? "Registrar" : "Iniciar Sesión";
+    modalTitulo.textContent = esRegistro ? "Registrar Usuario" : "Iniciar Sesión";
+    correoInput.classList.toggle("oculto");
+    correoLabel.classList.toggle("oculto");
+
+    // Cambiar texto de alternar
+    alternarTexto.innerHTML = esRegistro
+        ? `¿Ya tienes cuenta? <a href="#" id="btnAlternar" class="texto-enlace">Iniciar Sesión</a>`
+        : `¿No tienes cuenta? <a href="#" id="btnAlternar" class="texto-enlace">Registrarme</a>`;
+
+    // Reasignar evento para mantener funcionalidad
+    document.getElementById("btnAlternar").addEventListener("click", (e) => {
+        e.preventDefault();
+        btnAlternar.click();
+    });
+});
+
+// Evento para registrar/iniciar sesión
+formAutenticacion.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const usuario = usuarioInput.value.trim();
+    const correo = correoInput.value.trim();
+    const contrasena = contrasenaInput.value.trim();
+
+    if (btnAccion.textContent === "Registrar") {
+        if (usuarios.some(u => u.usuario === usuario)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Registro fallido',
+                text: 'Este usuario ya existe. Intenta con otro nombre de usuario.',
+            });
+        } else if (usuarios.some(u => u.correo === correo)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Registro fallido',
+                text: 'Este correo ya está registrado.',
+            });
+        } else {
+            const nuevoUsuario = { usuario, correo, contrasena, carrito: [] };
+            usuarios.push(nuevoUsuario);
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
+            usuarioActivo = nuevoUsuario;
+            localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
+            actualizarInterfazUsuario();
+            Swal.fire({
+                icon: 'success',
+                title: 'Registro exitoso',
+                text: `¡Bienvenido, ${usuario}!`,
+                timer: 3000,
+                showConfirmButton: false
+            });
+            modalAutenticacion.classList.add("oculto");
+        }
+    } else {
+        const usuarioEncontrado = usuarios.find(
+            u => (u.usuario === usuario || u.correo === usuario) && u.contrasena === contrasena
+        );
+        if (usuarioEncontrado) {
+            usuarioActivo = usuarioEncontrado;
+            localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
+            actualizarInterfazUsuario();
+            Swal.fire({
+                icon: 'success',
+                title: 'Inicio de sesión exitoso',
+                text: `¡Bienvenido de nuevo, ${usuarioActivo.usuario}!`,
+                timer: 3000,
+                showConfirmButton: false
+            });
+            modalAutenticacion.classList.add("oculto");
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Inicio de sesión fallido',
+                text: 'Usuario o contraseña incorrectos. Por favor, verifica tus datos.',
+            });
+        }
+    }
+});
+
+// Actualizar la interfaz cuando el usuario está activo
+function actualizarInterfazUsuario() {
+    if (usuarioActivo) {
+        nombreUsuario.textContent = usuarioActivo.usuario; 
+        nombreUsuario.parentElement.style.display = "flex"; 
+        btnSesion.style.display = "none"; 
+    } else {
+        nombreUsuario.parentElement.style.display = "none";
+        btnSesion.style.display = "block";
+    }
+}
+
+// Cerrar sesión
+cerrarSesion.addEventListener("click", () => {
+    usuarioActivo = null;
+    localStorage.removeItem("usuarioActivo");
+    actualizarInterfazUsuario();
+});
+
+// Inicializar
+document.addEventListener("DOMContentLoaded", () => {
+    actualizarInterfazUsuario();
+});
+
+
+// --------------- PRODUCTOS Y CARRITO---------------
 
 // Variables y elementos del DOM
 const contenedorProductos = document.getElementById("contenedorProductos");
@@ -63,8 +152,24 @@ const cantidadCarrito = document.getElementById("cantidadCarrito");
 const buscadorProductos = document.getElementById("buscadorProductos");
 const vaciarCarritoBtn = document.getElementById("vaciarCarrito");
 const finalizarCompraBtn = document.getElementById("finalizarCompra");
+let productosJSON = []; 
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+// Función para cargar productos desde JSON
+async function cargarProductos() {
+    try {
+        const respuesta = await fetch("./productos.json");
+        if (!respuesta.ok) {
+            throw new Error("Error al cargar los datos");
+        }
+        productosJSON = await respuesta.json();
+        mostrarProductos(productosJSON);
+    } catch (error) {
+        console.error("Error al cargar los productos:", error);
+        contenedorProductos.innerHTML = `<p class="error-carga">Error al cargar los productos. Intenta nuevamente más tarde.</p>`;
+    }
+}
 
 // Función para mostrar productos
 function mostrarProductos(productos) {
@@ -134,12 +239,12 @@ function agregarAlCarrito(id, cantidad) {
     actualizarCarrito();
 }
 
-// Función para actualizar el carrito y guardarlo en el Storage
+// Función para actualizar el carrito
 function actualizarCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
     mostrarCarrito();
 
-// Actualizar la cantidad total de productos en el botón de Carrito
+    // Actualizar cantidad total en el carrito
     const totalProductos = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
     cantidadCarrito.textContent = totalProductos;
 }
@@ -201,9 +306,9 @@ cerrarCarrito.addEventListener("click", () => {
     carritoPanel.classList.remove("activo");
 });
 
-// Cargar los productos al inicio
+// Cargar productos al inicio
 document.addEventListener("DOMContentLoaded", () => {
-    mostrarProductos(productosJSON);
+    cargarProductos();
     mostrarCarrito();
 });
 
@@ -240,7 +345,13 @@ buscadorProductos.addEventListener("input", (e) => {
 vaciarCarritoBtn.addEventListener("click", () => {
     carrito = [];
     actualizarCarrito();
-    alert("El carrito ha sido vaciado.");
+    Swal.fire({
+        icon: 'success',
+        title: 'Carrito vaciado',
+        text: 'El carrito ha sido vaciado correctamente.',
+        timer: 2000,
+        showConfirmButton: false
+    });
 });
 
 // Función para finalizar la compra
@@ -248,8 +359,42 @@ finalizarCompraBtn.addEventListener("click", () => {
     if (carrito.length > 0) {
         carrito = [];
         actualizarCarrito();
-        alert("💪Gracias por tu compra. ¡Esperamos verte pronto!🤝");
+        Swal.fire({
+            icon: 'success',
+            title: 'Compra realizada',
+            text: '💪 Gracias por tu compra. ¡Esperamos verte pronto! 🤝',
+            timer: 3000,
+            showConfirmButton: false
+        });
     } else {
-        alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
+        Swal.fire({
+            icon: 'error',
+            title: 'Carrito vacío',
+            text: 'El carrito está vacío. Agrega productos antes de finalizar la compra.',
+            timer: 3000,
+            showConfirmButton: false
+        });
     }
 });
+
+// Función para actualizar el contador de productos en el carrito
+function actualizarContadorCarrito() {
+    const totalProductos = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+    cantidadCarrito.textContent = totalProductos;
+}
+
+// Inicializar al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    actualizarContadorCarrito();
+    cargarProductos();
+    mostrarCarrito();
+});
+
+// Modificar la función de actualizarCarrito para que también actualice el contador
+function actualizarCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarCarrito();
+    actualizarContadorCarrito();
+}
+
