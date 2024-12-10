@@ -138,8 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarInterfazUsuario();
 });
 
-
-// --------------- PRODUCTOS Y CARRITO---------------
+// --------------- PRODUCTOS Y CARRITO ----------------
 
 // Variables y elementos del DOM
 const contenedorProductos = document.getElementById("contenedorProductos");
@@ -397,4 +396,6 @@ function actualizarCarrito() {
     mostrarCarrito();
     actualizarContadorCarrito();
 }
+
+
 
